@@ -38,7 +38,7 @@ const LoginScreen = () => {
                 <div className="col-md-6">
                     <h1 className="font-weight-bold  text-center p-3 mb-2 bg-danger text-white">Universidad Técnica Del Norte</h1>
                     <hr className="my-3" />
-                    <h1 className="text-center ">Grupo de Transporte UTN</h1>
+                    <h1 className="text-center ">Grupo de Transporte Escolar e Institucional UTN </h1>
                     <hr className="my-3" />
                     { err && <p className="text-center">{ err } </p> }
                     

@@ -20,77 +20,84 @@ const Student = () => {
                 <div className="col-2"> <strong>Cedula Estudiante:</strong> </div>
                 <div className="col-10">
                     {
-                        <pre>{JSON.stringify(active?.cedula_estudiante, null, 4)}</pre>
+                        <pre>{active?.cedula_estudiante}</pre>
                     }
                     <hr className="my-1" />
                 </div>
                 <div className="col-2"> <strong>Nombre Estudiante:</strong> </div>
                 <div className="col-10">
                     {
-                        <pre>{JSON.stringify(active?.nombre_estudiante, null, 4)}</pre>
+                        <pre>{active?.nombre_estudiante}</pre>
                     }
                     <hr className="my-1" />
                 </div>
                 <div className="col-2"> <strong>Apellido Estudiante:</strong> </div>
                 <div className="col-10">
                     {
-                        <pre>{JSON.stringify(active?.apellido_estudiante, null, 4)}</pre>
+                        <pre>{active?.apellido_estudiante}</pre>
                     }
                     <hr className="my-1" />
                 </div>
                 <div className="col-2"> <strong>Celular Estudiante:</strong> </div>
                 <div className="col-10">
                     {
-                        <pre>{JSON.stringify(active?.celular_estudiante, null, 4)}</pre>
+                        <pre>{active?.celular_estudiante}</pre>
                     }
                     <hr className="my-1" />
                 </div>
                 <div className="col-2"> <strong>Email Estudiante:</strong> </div>
                 <div className="col-10">
                     {
-                        <pre>{JSON.stringify(active?.email_estudiante, null, 4)}</pre>
+                        <pre>{active?.email_estudiante}</pre>
                     }
                     <hr className="my-1" />
                 </div>
                 <div className="col-2"> <strong>Ciudad:</strong> </div>
                 <div className="col-10">
                     {
-                        <pre>{JSON.stringify(active?.ciudad.nombre, null, 4)}</pre>
+                        <pre>{active?.ciudad.nombre}</pre>
                     }
                     <hr className="my-1" />
                 </div>
                 <div className="col-2"> <strong>Facultad:</strong> </div>
                 <div className="col-10">
                     {
-                        <pre>{JSON.stringify(active?.facultade.nombre, null, 4)}</pre>
+                        <pre>{active?.facultade.nombre}</pre>
+                    }
+                    <hr className="my-1" />
+                </div>
+                <div className="col-2"> <strong>Carrera:</strong> </div>
+                <div className="col-10">
+                    {
+                        <pre>{active?.carrera.nombre}</pre>
                     }
                     <hr className="my-1" />
                 </div>
                 <div className="col-2"><strong> Semestre:</strong></div>
                 <div className="col-10">
                     {
-                        <pre>{JSON.stringify(active?.semestre.nombre, null, 4)}</pre>
+                        <pre>{active?.semestre.nombre}</pre>
                     }
                     <hr className="my-1" />
                 </div>
                 <div className="col-2"> <strong>Modalidad de Estudio:</strong> </div>
                 <div className="col-10">
                     {
-                        <pre>{JSON.stringify(active?.modalidad.nombre, null, 4)}</pre>
+                        <pre>{active?.modalidad.nombre}</pre>
                     }
                     <hr className="my-1" />
                 </div>
-                <div className="col-2"> <strong>Calificacion del Servicio:</strong> </div>
+         {/*        <div className="col-2"> <strong>Calificacion del Servicio:</strong> </div>
                 <div className="col-10">
                     {
                         (comentarios && comentarios.length > 1)
                             ? comentarios.map((comentario: commentary, key: number) =>
-                                <pre key={key}>{JSON.stringify(comentario.gradosatisfacion, null, 4)}</pre>)
+                                <pre key={key}>{comentario.gradosatisfacion}</pre>)
                             : <div>No Existe Datos </div>
                     }
                   <hr className="my-1" />
-                </div>
-                <div className="col-2"><strong>Horario</strong> </div>
+                </div> */}
+                <div className="col-2"><strong>Horario:</strong> </div>
                 <table className="table table-bordered ">
                     <thead>
                         <tr>
@@ -105,7 +112,7 @@ const Student = () => {
                                 {
                                     (horarios && horarios.length > 1)
                                         ? horarios.map((hora: schedule, key: number) =>
-                                            <pre key={key}>{JSON.stringify(hora.nombredia, null, 4)}</pre>)
+                                            <pre key={key}>{hora.nombredia}</pre>)
                                         : <div>no existe datos </div>
                                 }
                             </td>
@@ -113,7 +120,7 @@ const Student = () => {
                                 {
                                     (horarios && horarios.length > 1)
                                         ? horarios.map((hora: schedule, key: number) =>
-                                            <pre key={key}>{JSON.stringify(hora.horaentrata, null, 4)}</pre>)
+                                            <pre key={key}>{hora.horaentrata}</pre>)
                                         : <div>no existe datos </div>
                                 }
                               
@@ -122,7 +129,7 @@ const Student = () => {
                                 {
                                     (horarios && horarios.length > 1)
                                         ? horarios.map((hora: schedule, key: number) =>
-                                            <pre key={key}>{JSON.stringify(hora.horasalida, null, 4)}</pre>)
+                                            <pre key={key}>{hora.horasalida}</pre>)
                                         : <div>no existe datos </div>
                                 }
                             </td>

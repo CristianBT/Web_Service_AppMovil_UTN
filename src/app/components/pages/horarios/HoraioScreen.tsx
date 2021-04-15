@@ -10,6 +10,12 @@ import Loading from '../../ui/loading';
 import { startLoading } from '../../../actions/ui';
 
 
+import jsPDF from 'jspdf';
+import { startingSetPdf } from '../../../actions/pdf';
+import autoTable from 'jspdf-autotable'
+import ModalPDF from '../../ui/reporte';
+
+
 const Afluencia = () => {
 
     const date = moment().hour(0).minute(0).second(0);
@@ -45,7 +51,42 @@ const Afluencia = () => {
         dispatch(startLoading());
     }
 
+   const handlePrint = async () => {
+
+        const doc = new jsPDF()
+        doc.setProperties({ title: 'Rango Consulta Horarios' })
+
+        doc.setFontSize(10);
+        doc.text(70, 6, 'Servicio de Transporte Escolar E Institucional')
+        doc.setFontSize(10);
+        doc.text(80, 10, 'Universidad Tecncia del Norte')
+        doc.setFontSize(10);
+        doc.text(73, 14, 'LISTA POR RANGO DE CONSULTA')
+        autoTable(doc, {
+            head: [[
+                'Cedula Estudiante',
+                'Dia de la Semana',
+                'Hora de Entrada',
+                'Hora de Salida'
+
+
+            ]],
+            body: horarios?.map((hora: i_horarios) => [
+                hora.cedula_estudiante,
+                hora.nombredia,
+                hora.horaentrata,
+                hora.horasalida
+
+
+            ])
+        })
+
+        const urlString = doc.output('datauristring');
+        dispatch(startingSetPdf(urlString))
+    } 
+
     return <>
+     
         <form onSubmit={handleSubmit as any}>
             <div className='mb-3'>
                 <h3 className="text-center">Afluencia</h3>
@@ -61,7 +102,7 @@ const Afluencia = () => {
                 </select>
             </div>
             <div className='mb-3'>
-               <button type='button' className="btn btn-outline-secondary btn-lg" onClick={() => setShowTimeStart(!showTimeStart)}>Hora Entrada</button> 
+                <button type='button' className="btn btn-outline-secondary btn-lg" onClick={() => setShowTimeStart(!showTimeStart)}>Hora Entrada</button>
                 {
                     showTimeStart && <TimeKeeper
                         time={horaentrata}
@@ -71,7 +112,7 @@ const Afluencia = () => {
                 }
             </div>
             <div className='mb-3'>
-             <button type='button' className="btn btn-outline-secondary btn-lg" onClick={() => setShowTimeEnd(!showTimeEnd)}>Hora Salida</button> 
+                <button type='button' className="btn btn-outline-secondary btn-lg" onClick={() => setShowTimeEnd(!showTimeEnd)}>Hora Salida</button>
                 {
                     showTimeEnd && <TimeKeeper
                         time={horasalida}
@@ -83,16 +124,16 @@ const Afluencia = () => {
             <button type="submit" className="btn btn-warning btn-lg">Consultar</button>
         </form>
         <br /><br />
-
-
+        <button className="btn btn-info" onClick={handlePrint}>Descargar Listado en PDF</button> 
+        <br /><br />
         {
             loading
                 ? <Loading type='spin' color='#48f542' />
                 : <pre>
 
 
-                    <div className="col-2"><strong>Listado</strong> </div>
-                    <table className="table table-bordered ">
+                    <div className="col-2"><strong><h5>Listado</h5> </strong> </div>
+                    <table className="table table-bordered table-striped table-hover table-sm">
                         <thead>
                             <tr>
                                 <th scope="col">Cedula Estudiante</th>
@@ -107,7 +148,7 @@ const Afluencia = () => {
                                     {
                                         (horarios && horarios.length >= 1)
                                             ? horarios.map((hora: i_horarios, key: number) =>
-                                                <pre key={key}>{JSON.stringify(hora.cedula_estudiante, null, 4)}</pre>)
+                                                <pre>{hora.cedula_estudiante}</pre>)
                                             : <div>No Existe Datos </div>
                                     }
 
@@ -116,7 +157,7 @@ const Afluencia = () => {
                                     {
                                         (horarios && horarios.length >= 1)
                                             ? horarios.map((hora: i_horarios, key: number) =>
-                                                <pre key={key}>{JSON.stringify(hora.nombredia, null, 4)}</pre>)
+                                                <pre>{hora.nombredia}</pre>)
                                             : <div>No Existe Datos </div>
                                     }
 
@@ -125,7 +166,7 @@ const Afluencia = () => {
                                     {
                                         (horarios && horarios.length >= 1)
                                             ? horarios.map((hora: i_horarios, key: number) =>
-                                                <pre key={key}>{JSON.stringify(hora.horaentrata, null, 4)}</pre>)
+                                                <pre >{hora.horaentrata}</pre>)
                                             : <div>No Existe Datos </div>
                                     }
 
@@ -134,7 +175,7 @@ const Afluencia = () => {
                                     {
                                         (horarios && horarios.length >= 1)
                                             ? horarios.map((hora: i_horarios, key: number) =>
-                                                <pre key={key}>{JSON.stringify(hora.horasalida, null, 4)}</pre>)
+                                                <pre >{hora.horasalida}</pre>)
                                             : <div>No Existe Datos </div>
                                     }
 
@@ -147,11 +188,7 @@ const Afluencia = () => {
 
         }
 
-
-
-
-
-
+        <ModalPDF />
 
 
 
