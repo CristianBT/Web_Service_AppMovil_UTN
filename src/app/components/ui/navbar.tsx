@@ -47,6 +47,12 @@ const Nav = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
+                  <Link className="nav-link"  to='/comentarios'>
+                    Comentarios
+                  </Link>
+                </li>
+ 
+                <li className="nav-item">
                 <button className="btn btn-info" onClick={ handleLogout }>Cerrar Sesion</button>
                 </li>
               </ul>
