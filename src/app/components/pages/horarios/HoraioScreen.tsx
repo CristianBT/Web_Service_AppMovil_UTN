@@ -9,14 +9,58 @@ import i_redux from '../../../intefaces/reduxInterface';
 import Loading from '../../ui/loading';
 import { startLoading } from '../../../actions/ui';
 
-
 import jsPDF from 'jspdf';
 import { startingSetPdf } from '../../../actions/pdf';
-import autoTable from 'jspdf-autotable'
+import autoTable from 'jspdf-autotable';
 import ModalPDF from '../../ui/reporte';
+/* import ReactExport from "react-data-export";   */
+
+/* const ExcelFile =ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelSheet;
+const ExcelColumn= ReactExport.ExcelColumn;  
+ */
+
+
 
 
 const Afluencia = () => {
+
+
+    function exportTableToExcel(tableID, filename = 'Horario'){
+        var downloadLink;
+        var dataType = 'application/vnd.ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+        
+        // Specify file name
+        filename = filename?filename+'.xls':'excel_data.xls';
+        
+        // Create download link element
+        downloadLink = document.createElement("a");
+        
+        document.body.appendChild(downloadLink);
+        
+        if(navigator.msSaveOrOpenBlob){
+            var blob = new Blob(['ufeff', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob( blob, filename);
+        }else{
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+        
+            // Setting the file name
+            downloadLink.download = filename;
+            
+            //triggering the function
+            downloadLink.click();
+        }
+    }
+    
+
+
+
+
 
     const date = moment().hour(0).minute(0).second(0);
 
@@ -59,7 +103,7 @@ const Afluencia = () => {
         doc.setFontSize(10);
         doc.text(70, 6, 'Servicio de Transporte Escolar E Institucional')
         doc.setFontSize(10);
-        doc.text(80, 10, 'Universidad Tecncia del Norte')
+        doc.text(80, 10, 'Universidad Técnica del Norte')
         doc.setFontSize(10);
         doc.text(73, 14, 'LISTA POR RANGO DE CONSULTA')
         autoTable(doc, {
@@ -85,6 +129,30 @@ const Afluencia = () => {
         dispatch(startingSetPdf(urlString))
     } 
 
+    /* const horarioexcel=[
+        {
+            cedula: horarios?.map((hora: i_horarios) => [
+                hora.cedula_estudiante
+            ])
+        },
+        {
+            dia: horarios?.map((hora: i_horarios) => [
+                hora.nombredia
+            ])
+        },
+        
+        {
+            ent: horarios?.map((hora: i_horarios) => [
+                hora.horaentrata
+            ])
+        },
+        {
+            sal: horarios?.map((hora: i_horarios) => [
+                hora.horasalida
+            ])
+        }
+    ]
+ */
     return <>
      
         <form onSubmit={handleSubmit as any}>
@@ -124,8 +192,21 @@ const Afluencia = () => {
             <button type="submit" className="btn btn-warning btn-lg">Consultar</button>
         </form>
         <br /><br />
+
         <button className="btn btn-info" onClick={handlePrint}>Descargar Listado en PDF</button> 
         <br /><br />
+
+ {/*        <ExcelFile element={<button>Exportar a Excel</button>} filename="Excel">
+            <ExcelSheet data={horarioexcel} name="Horarios por Rangos" >
+<ExcelColumn  label ="Cedula Estudiante" value="cedula"/>
+            </ExcelSheet>
+       
+        </ExcelFile>
+
+
+        <br /><br /> */}
+
+        
         {
             loading
                 ? <Loading type='spin' color='#48f542' />
@@ -133,7 +214,7 @@ const Afluencia = () => {
 
 
                     <div className="col-2"><strong><h5>Listado</h5> </strong> </div>
-                    <table className="table table-bordered table-striped table-hover table-sm">
+                    <table id="tblData" className="table table-bordered table-striped table-hover table-sm">
                         <thead>
                             <tr>
                                 <th scope="col">Cedula Estudiante</th>

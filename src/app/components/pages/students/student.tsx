@@ -66,13 +66,13 @@ const Student = () => {
                     }
                     <hr className="my-1" />
                 </div>
-                <div className="col-2"> <strong>Carrera:</strong> </div>
+               {/*  <div className="col-2"> <strong>Carrera:</strong> </div>
                 <div className="col-10">
                     {
                         <pre>{active?.carrera.nombre}</pre>
                     }
                     <hr className="my-1" />
-                </div>
+                </div> */}
                 <div className="col-2"><strong> Semestre:</strong></div>
                 <div className="col-10">
                     {

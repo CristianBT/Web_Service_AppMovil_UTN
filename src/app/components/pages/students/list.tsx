@@ -14,21 +14,16 @@ const ListStudents = () => {
     const dispatch = useDispatch();
 
     const { students } = useSelector((info: i_redux) => info.student)
+    console.log(students)
 
     const handlePrint = async () => {
 
         const doc = new jsPDF()
         doc.setProperties({ title: 'ListaEstudiante' })
-        /*        doc.text('Servicio de Transporte Escolar E Institucional',14,10,{
-                   align: 'justify'
-               })
-               doc.text('Universidad Tecnica del Norte',14,25,{
-                   align: 'justify'
-               }) */
         doc.setFontSize(10);
         doc.text(70, 6, 'Servicio de Transporte Escolar E Institucional')
         doc.setFontSize(10);
-        doc.text(80, 10, 'Universidad Tecncia del Norte')
+        doc.text(80, 10, 'Universidad Técnica del Norte')
         doc.setFontSize(10);
         doc.text(22, 14, 'LISTA CONSOLIDADA DE ESTUDIANTES Y PERSONAL QUE UTILIZA EL SERVICIO DE TRANSPORTE')
         autoTable(doc, {
@@ -70,20 +65,20 @@ const ListStudents = () => {
                     <th>Semestre</th>
                     <th>Ciudad</th>
                     <th>Facultad</th>
-                    <th>Carrera</th>
+        {/*   <th>Carrera</th>  */}
                     <th>Opcion: Busqueda</th>
                 </tr>
             </thead>
             <tbody>
                 {students?.map((student: i_student) => <tr key={student.cedula_estudiante}>
-
                     <td>{student.nombre_estudiante}</td>
                     <td>{student.apellido_estudiante}</td>
                     <td>{student.cedula_estudiante}</td>
                     <td>{student.semestre.nombre}</td>
                     <td>{student.ciudad.nombre}</td>
                     <td>{student.facultade.nombre}</td>
-                    <td>{student.carrera.nombre}</td>
+                   {/*  <td>{student.carrera.nombre}</td>  */}  
+
                     <td><Link
                         onClick={() => handleSearch(student)}
                         style={{ cursor: 'pointer', textDecoration: 'none' }}

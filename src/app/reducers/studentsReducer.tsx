@@ -1,5 +1,5 @@
 import type from '../types';
-import { i_student_state as i_state, i_student_action as i_action } from '../intefaces/studentInterface';
+import { i_student_state as i_state, i_student_action as i_action  } from '../intefaces/studentInterface';
 
 
 const init:i_state = { }

@@ -19,7 +19,7 @@ export interface i_student {
     facultade: faculty,
     modalidad: modality,
     semestre: semester,
-    carrera: carrera,
+    carrera: career,
     horarios: Array<schedule>,
     comentarios?: Array<commentary>
 }
@@ -45,6 +45,12 @@ interface semester {
     nombre: string;
 }
 
+interface career {
+    id_carrera: number;
+    id_facultad: number;
+    nombre: string,
+}
+
 export interface schedule {
     id_horario: number;
     cedula_estudiante: string;
@@ -61,9 +67,3 @@ export interface commentary {
     descripcion: String
 }
 
-export interface carrera {
-    id_carrera: Number;
-    id_facultad: Number;
-    nombre: String;
-   
-}
