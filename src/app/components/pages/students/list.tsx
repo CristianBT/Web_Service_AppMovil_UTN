@@ -9,7 +9,9 @@ import ModalPDF from '../../ui/reporte';
 import { setActiveStudent } from '../../../actions/students';
 import { Link } from 'react-router-dom';
 
+
 const ListStudents = () => {
+
 
     const dispatch = useDispatch();
 
@@ -65,7 +67,7 @@ const ListStudents = () => {
                     <th>Semestre</th>
                     <th>Ciudad</th>
                     <th>Facultad</th>
-        {/*   <th>Carrera</th>  */}
+         <th>Carrera</th> 
                     <th>Opcion: Busqueda</th>
                 </tr>
             </thead>
@@ -77,7 +79,8 @@ const ListStudents = () => {
                     <td>{student.semestre.nombre}</td>
                     <td>{student.ciudad.nombre}</td>
                     <td>{student.facultade.nombre}</td>
-                   {/*  <td>{student.carrera.nombre}</td>  */}  
+               <td> {student.carrera?.nombre} </td>   
+               
 
                     <td><Link
                         onClick={() => handleSearch(student)}

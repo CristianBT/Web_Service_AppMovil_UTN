@@ -13,17 +13,16 @@ import jsPDF from 'jspdf';
 import { startingSetPdf } from '../../../actions/pdf';
 import autoTable from 'jspdf-autotable';
 import ModalPDF from '../../ui/reporte';
-/* import ReactExport from "react-data-export";   */
+/* import ReactExport from "react-data-export";    */
+/*  import ReactExport from 'react-export-excel';   */ 
 
-/* const ExcelFile =ReactExport.ExcelFile;
-const ExcelSheet = ReactExport.ExcelSheet;
-const ExcelColumn= ReactExport.ExcelColumn;  
- */
-
-
+/*  const ExcelFile =ReactExport.ExcelFile;
+ const ExcelSheet = ReactExport.ExcelSheet;
+ const ExcelColumn= ReactExport.ExcelColumn;   */
 
 
 const Afluencia = () => {
+
 
 
     const date = moment().hour(0).minute(0).second(0);
