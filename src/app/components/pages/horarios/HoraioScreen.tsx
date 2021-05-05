@@ -13,13 +13,6 @@ import jsPDF from 'jspdf';
 import { startingSetPdf } from '../../../actions/pdf';
 import autoTable from 'jspdf-autotable';
 import ModalPDF from '../../ui/reporte';
-/* import ReactExport from "react-data-export";    */
-/*  import ReactExport from 'react-export-excel';   */ 
-
-/*  const ExcelFile =ReactExport.ExcelFile;
- const ExcelSheet = ReactExport.ExcelSheet;
- const ExcelColumn= ReactExport.ExcelColumn;   */
-
 
 const Afluencia = () => {
 
@@ -92,30 +85,6 @@ const Afluencia = () => {
         dispatch(startingSetPdf(urlString))
     } 
 
-    /* const horarioexcel=[
-        {
-            cedula: horarios?.map((hora: i_horarios) => [
-                hora.cedula_estudiante
-            ])
-        },
-        {
-            dia: horarios?.map((hora: i_horarios) => [
-                hora.nombredia
-            ])
-        },
-        
-        {
-            ent: horarios?.map((hora: i_horarios) => [
-                hora.horaentrata
-            ])
-        },
-        {
-            sal: horarios?.map((hora: i_horarios) => [
-                hora.horasalida
-            ])
-        }
-    ]
- */
     return <>
      
         <form onSubmit={handleSubmit as any}>
@@ -158,16 +127,6 @@ const Afluencia = () => {
 
         <button className="btn btn-info" onClick={handlePrint}>Descargar Listado en PDF</button> 
         <br /><br />
-
- {/*        <ExcelFile element={<button>Exportar a Excel</button>} filename="Excel">
-            <ExcelSheet data={horarioexcel} name="Horarios por Rangos" >
-<ExcelColumn  label ="Cedula Estudiante" value="cedula"/>
-            </ExcelSheet>
-       
-        </ExcelFile>
-
-
-        <br /><br /> */}
 
         
         {
