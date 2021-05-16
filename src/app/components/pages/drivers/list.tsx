@@ -27,11 +27,11 @@ const ListDrivers = () => {
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Cedula</th>
-                    <th>Correo</th>
-                    <th>Telefono</th>
+                    <th>Correo Electrónico </th>
+                    <th>Teléfono </th>
                     <th>Estado</th>
                     <th>Recorridos</th>
-                    <th>Opciones</th>
+                    <th>Opción: Actualizar </th>
                 </tr>
             </thead>
             <tbody>

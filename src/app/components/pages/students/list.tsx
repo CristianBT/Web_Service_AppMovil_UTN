@@ -35,15 +35,15 @@ const ListStudents = () => {
                 'Nombre',
                 'Facultad',
                 'Origen'
-                
+
             ]],
             body: students?.map((student: i_student) => [
                 student.cedula_estudiante,
                 student.apellido_estudiante,
-                student.nombre_estudiante, 
+                student.nombre_estudiante,
                 student.facultade.nombre,
                 student.ciudad.nombre
-                
+
             ])
         })
 
@@ -67,8 +67,8 @@ const ListStudents = () => {
                     <th>Semestre</th>
                     <th>Ciudad</th>
                     <th>Facultad</th>
-         <th>Carrera</th> 
-                    <th>Opcion: Busqueda</th>
+                    <th>Carrera</th>
+                    <th>Opción: Búsqueda</th>
                 </tr>
             </thead>
             <tbody>
@@ -79,8 +79,8 @@ const ListStudents = () => {
                     <td>{student.semestre.nombre}</td>
                     <td>{student.ciudad.nombre}</td>
                     <td>{student.facultade.nombre}</td>
-               <td> {student.carrera?.nombre} </td>   
-               
+                    <td> {student.carrera?.nombre} </td>
+
 
                     <td><Link
                         onClick={() => handleSearch(student)}

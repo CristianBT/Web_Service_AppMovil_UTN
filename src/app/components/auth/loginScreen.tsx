@@ -79,7 +79,7 @@ const LoginScreen = () => {
                         <button
                             type='submit' 
                             className="btn btn-primary btn-lg btn-block" 
-                            >Iniciar Sesion
+                            >Iniciar Sesión
                         </button>
                     </form>
                 </div>

@@ -52,8 +52,8 @@ class ComponentToPrint extends React.Component {
                     <tr>
                         <th >#</th>
                         <th >Cedula Estudiante</th>
-                        <th >Descripcion</th>
-                        <th >Grado de Sadisfaccion</th>
+                        <th >Descripción</th>
+                        <th >Grado de Satisfacción </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,7 +86,7 @@ class Comentario extends React.Component {
                 <h3 className="text-center">Comentarios</h3>
                 <hr className="my-3" />
                 <ReactToPrint
-                    trigger={() => <button className="btn btn-info">Descagar en PDF</button>}
+                    trigger={() => <button className="btn btn-info">Descargar en PDF</button>}
                     content={() => this.componentRef}
                 />
                 <br /><br />

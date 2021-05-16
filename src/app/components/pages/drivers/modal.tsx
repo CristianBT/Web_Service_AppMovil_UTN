@@ -115,7 +115,7 @@ const ModalCRUD = () => {
                     />
                 </div>
                 <div className='mb-3'>
-                    <label htmlFor="correoid" className='form-label'> Correo</label>
+                    <label htmlFor="correoid" className='form-label'> Correo Electrónico</label>
                     <input
                         id='correoid' 
                         type="email"
@@ -127,7 +127,7 @@ const ModalCRUD = () => {
                     />
                 </div>
                 <div className='mb-3'>
-                    <label htmlFor="telefonoid" className='form-label'>Telefono</label>
+                    <label htmlFor="telefonoid" className='form-label'>Teléfono</label>
                     <input
                         id='telefonoid' 
                         type="telf"

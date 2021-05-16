@@ -33,7 +33,7 @@ const Nav = () => {
               <ul className="navbar-nav">
                 <li className="nav-item">
                   <Link className="nav-link" to='/students/list'>
-                    Lista General de Estudiantes y Busqueda
+                    Lista General de Estudiantes y Búsqueda
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -53,7 +53,7 @@ const Nav = () => {
                 </li>
  
                 <li className="nav-item">
-                <button className="btn btn-info" onClick={ handleLogout }>Cerrar Sesion</button>
+                <button className="btn btn-info" onClick={ handleLogout }>Cerrar Sesión</button>
                 </li>
               </ul>
             </div>
